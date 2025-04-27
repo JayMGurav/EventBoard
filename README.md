@@ -54,8 +54,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Known Issues
 
-- Calendar header selection doesn't synchronize with calendar body scroll position
-- Calendar header active date is not updated on scroll in mobile view
+- Calendar header selection doesn't synchronize with calendar body scroll position, the Calendar header active date is not updated on scroll in mobile view
 - Some responsive design inconsistencies across different viewport sizes
 
 ## Roadmap
