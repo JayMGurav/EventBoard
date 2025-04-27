@@ -3,7 +3,7 @@ export interface EventInterface {
     title: string;
     description: string;
     date: string | Date;
-    imageUrl?: string;
+    imageUrl: string;
     color?: string;
 }
   

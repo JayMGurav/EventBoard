@@ -24,7 +24,7 @@ export const scheduledEvents: EventsByDateInterface = {
             "id": "event-10",
             "title": "Client Check-in: Project Beta",
             "description": "Bi-weekly sync with the Project Beta client. Agenda: progress update presentation, demo of new features, addressing client feedback/questions, and confirming next milestone deliverables.",
-            "imageUrl": "https://images.unsplash.com/photo-1551818255-e6e10975846a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+            "imageUrl": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
             "date": "2025-04-29T11:30:00.000Z",
             "color": "#667EEA" // Lighter blue/purple
         },
@@ -68,7 +68,7 @@ export const scheduledEvents: EventsByDateInterface = {
             "id": "event-15",
             "title": "User Testing Feedback Review",
             "description": "Analyze findings from the latest round of user testing. Focus on: summarizing key usability issues, prioritizing bugs/feature requests based on feedback, assigning action items to design/dev teams.",
-            "imageUrl": "https://images.unsplash.com/photo-1600880292210-f79b05736691?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+            "imageUrl": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
             "date": "2025-05-01T14:30:00.000Z",
             "color": "#805AD5" // Purple
         }

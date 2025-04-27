@@ -1,10 +1,10 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
 import { format, isSameDay } from "date-fns";
 import { useCalenderStore } from "@/store/use-calendar-store";
-import { cn } from "@/lib/utils";
 import { useCallback } from "react";
+import { EventCardButton } from "../event/event-card-button";
 
 export function CalendarBody() {
     const {
@@ -52,21 +52,7 @@ export function CalendarBody() {
                     >
                         <AnimatePresence>
                             {dayEvents.map(event => (
-                                <motion.div 
-                                key={`DAY_${format(day, "dd-MM-yyyy")}_${event.id}`} 
-                                className={cn("relative p-4 pt-6 my-2 rounded-[4px] bg-card border font-semibold cursor-grab")}
-                                layoutId={`event-${event.id}`}
-                                draggable
-                                whileHover={{ scale: 1.02 }}
-                                initial={{ opacity: 1, scale:1 }}
-                                onDragStart={(e) => {
-                                    e.dataTransfer.setData('eventId', event.id.toString());
-                                }}
-                                onDrag={(e) => {}}
-                            >
-                                <div className="w-3 h-3 absolute top-2 right-2 rounded-[4px] shadow-xl z-10" style={{background: event.color}}/>
-                                    {event.title}
-                                </motion.div>
+                                <EventCardButton key={`DAY_${format(day, "dd-MM-yyyy")}_${event.id}`}  event={event}/>
                             ))}
                         </AnimatePresence>
                     </div>
