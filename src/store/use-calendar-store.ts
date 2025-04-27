@@ -7,7 +7,7 @@ import { create } from 'zustand';
 
 export const useCalenderStore = create<CalendarState>((set) => ({
     // --- state ---
-    events: Object.values(scheduledEvents).flat(),
+    events: Object.values(scheduledEvents).flat().map(({date, ...restEvent}) => ({ ...restEvent, date:new Date(date)})),
     currentDate: new Date(),
     currentWeek: getCurrentWeekDates(),
     activeDragEventId: null,
@@ -36,27 +36,11 @@ export const useCalenderStore = create<CalendarState>((set) => ({
           currentDate: prevWeek[0]
         }
       }),
-      moveEvent: (eventId, newDate) => set(({events:currentEvents}) => ({
-        events: currentEvents.map(event => {
-            if(event.id === eventId){
-                const originalEventDate = new Date(event.date);
-                const updatedEventDate = new Date(newDate);
-
-                // update with new date but same hours
-                updatedEventDate.setUTCHours(
-                    originalEventDate.getUTCHours(),
-                    originalEventDate.getUTCMinutes(),
-                    originalEventDate.getUTCSeconds(),
-                    originalEventDate.getUTCMilliseconds()
-                );
-
-                return {
-                    ...event,
-                    date: updatedEventDate
-                }
-            } else {
-                return event;
-            }
+      moveEvent: (eventId, newDate) => set((state) => ({
+        events: state.events.map(event => {
+          if (event.id === eventId){
+            return { ...event, date: new Date(newDate.setHours(event.date.getHours(), event.date.getMinutes())) } // Keep original time
+          } else return event
         }),
         activeDragEventId: null
       })),
