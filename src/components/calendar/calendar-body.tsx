@@ -5,6 +5,7 @@ import { format, isSameDay } from "date-fns";
 import { useCalenderStore } from "@/store/use-calendar-store";
 import { useCallback } from "react";
 import { EventDetailDialog } from "../event/event-detail-dialog";
+import { toast } from "sonner";
 
 export function CalendarBody() {
     const {
@@ -29,7 +30,9 @@ export function CalendarBody() {
             e.currentTarget.classList.remove('bg-card');
             const eventId = e.dataTransfer.getData('eventId');
             moveEvent(eventId, day);
-            
+            toast("Event has been updated!", {
+                description: `${format(day, "EEEE, MMMM dd, yyyy 'at' h:mm a")}`,
+            })
         },
         [moveEvent]
     );
