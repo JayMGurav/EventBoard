@@ -39,7 +39,8 @@ export const useCalenderStore = create<CalendarState>((set) => ({
       moveEvent: (eventId, newDate) => set((state) => ({
         events: state.events.map(event => {
           if (event.id === eventId){
-            return { ...event, date: new Date(newDate.setHours(event.date.getHours(), event.date.getMinutes())) } // Keep original time
+            const currentDate = new Date(event.date)
+            return { ...event, date: new Date(newDate.setHours(currentDate.getHours(), currentDate.getMinutes())) } // Keep original time
           } else return event
         }),
         activeDragEventId: null

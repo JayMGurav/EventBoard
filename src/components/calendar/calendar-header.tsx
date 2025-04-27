@@ -5,9 +5,25 @@ import { cn, isSameDay } from "@/lib/utils";
 import { format } from "date-fns";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../ui/button";
+import { useEffect } from "react";
 
 export function CalenderHeader() {
     const { currentDate, currentWeek, goToNextWeek, goToPrevWeek, setCurrentDate } = useCalenderStore();
+
+    const scrollToDay = (day: Date) => {
+        const dayId = `DAY_${format(day, "dd-MM-yyyy")}`;
+        const targetDay = document.getElementById(dayId);
+        if (targetDay) {
+            targetDay.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center', // Optional: Scroll to center of the container
+            });
+        }
+    };
+
+    useEffect(() => {
+        scrollToDay(currentDate) 
+    }, [currentDate])
 
     return (
         <div>
@@ -26,7 +42,7 @@ export function CalenderHeader() {
                     <Button
                         key={`${day.toString()}_header`}
                         variant="ghost"
-                        className={cn("flex flex-col text-center py-10 border-b", isSameDay(currentDate, day) && "border-x border-t border-b-0 bg-card md:bg-inherit text-blue-400")}
+                        className={cn("flex flex-col text-center py-10 border-b", isSameDay(currentDate, day) && "border-x border-t border-b-0 md:bg-inherit text-blue-400")}
                         onClick={() => setCurrentDate(day)}
                     >
                         <div className="text-muted-foreground">{format(day, "EE")}</div>

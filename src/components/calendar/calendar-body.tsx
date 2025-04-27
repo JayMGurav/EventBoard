@@ -4,7 +4,7 @@ import { AnimatePresence } from "motion/react";
 import { format, isSameDay } from "date-fns";
 import { useCalenderStore } from "@/store/use-calendar-store";
 import { useCallback } from "react";
-import { EventCardButton } from "../event/event-card-button";
+import { EventDetailDialog } from "../event/event-detail-dialog";
 
 export function CalendarBody() {
     const {
@@ -36,7 +36,7 @@ export function CalendarBody() {
 
 
     return (
-        <div className="flex-1 border snap-x snap-mandatory overflow-x-auto scroll-smooth md:grid md:grid-cols-7">
+        <div className="flex flex-1 snap-x snap-mandatory overflow-x-auto scroll-smooth md:grid md:grid-cols-7">
             {currentWeek.map(day => {
                 const dayEvents = events.filter(
                     event => isSameDay(event.date, day)
@@ -45,6 +45,7 @@ export function CalendarBody() {
                 return (
                     <div
                         key={`DAY_${format(day, "dd-MM-yyyy")}`}
+                        id={`DAY_${format(day, "dd-MM-yyyy")}`}
                         className="relative h-full w-full flex flex-col py-4 px-2 shrink-0 snap-start md:w-auto border-x border-b"
                         onDragOver={handleDragOver}
                         onDragLeave={handleDragLeave}
@@ -52,7 +53,7 @@ export function CalendarBody() {
                     >
                         <AnimatePresence>
                             {dayEvents.map(event => (
-                                <EventCardButton key={`DAY_${format(day, "dd-MM-yyyy")}_${event.id}`}  event={event}/>
+                                <EventDetailDialog key={`DAY_${format(day, "dd-MM-yyyy")}_${event.id}`}  event={event}/>
                             ))}
                         </AnimatePresence>
                     </div>
