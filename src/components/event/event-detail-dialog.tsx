@@ -12,7 +12,6 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { format } from "date-fns";
 import { EventInterface } from '@/types';
-import { motion } from 'motion/react';
 
 export function EventDetailDialog({ event }: { event: EventInterface }) {
   return (
@@ -22,14 +21,11 @@ export function EventDetailDialog({ event }: { event: EventInterface }) {
         stiffness: 200,
         damping: 24,
       }}
-      
     >
       <MorphingDialogTrigger>
-        <motion.div
-          layoutId={`event-${event.id}`}
+        <div
           className={cn("relative my-2 rounded-[4px] bg-card border cursor-grab flex items-center flex-wrap spaxe-x-3 p-2 gap-3 select-none")}
           draggable
-          // @ts-expect-error HTML native event is not not infered by framer-motion's event on the element
           onDragStart={(e: React.DragEvent<HTMLDivElement>) => {
             e.dataTransfer.setData('eventId', event.id.toString());
           }}
@@ -54,7 +50,7 @@ export function EventDetailDialog({ event }: { event: EventInterface }) {
               {format(event.date, "h:mm aaa")}
             </span>
           </div>
-        </motion.div>
+        </div>
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
         <MorphingDialogContent
